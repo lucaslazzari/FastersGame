@@ -41,6 +41,7 @@ Mana: 35, Velocidade de Ataque: 1.25
 todas as customizações que o usuário escolheu
 
 # BANCO DE DADOS
+<p>Criando tabela dos usuarios<p>
 CREATE TABLE Users(
 	IdUser int PRIMARY KEY IDENTITY(1,1) NOT NULL,
 	FullName nvarchar(max) NOT NULL,
@@ -49,14 +50,8 @@ CREATE TABLE Users(
 	Passwords nvarchar(max) NOT NULL,
 	IdPlayer int NOT NULL
 )
-
-ALTER TABLE Users
-   ADD CONSTRAINT fk_IdUserPlayer_IdPlayer FOREIGN KEY (IdPlayer)
-      REFERENCES Player (IdPlayer)
-      ON DELETE CASCADE
-      ON UPDATE CASCADE
-;
-
+	
+<p>Criando tabela das informaçoes do personagem de acordo com o usuario<p>
 CREATE TABLE Player(
 	IdPlayer int PRIMARY KEY IDENTITY(1,1) NOT NULL,
 	IdPlayerType int,
@@ -64,6 +59,7 @@ CREATE TABLE Player(
 	IdFisicCharacteristics int
 )
 
+<p>Criando tabela do tipo do personagem<p>
 CREATE TABLE PlayerType(
 	IdPlayerType int PRIMARY KEY IDENTITY(1,1) NOT NULL,
 	NameType nvarchar(max) NOT NULL,
@@ -73,6 +69,7 @@ CREATE TABLE PlayerType(
 	AtackSpeed float NOT NULL
 )
 
+<p>Criando tabela das caracteristicas fisicas<p>
 CREATE TABLE FisicCharacteristics(
 	IdFisicCharacteristics int PRIMARY KEY IDENTITY(1,1) NOT NULL,
 	HairColor nvarchar(255) NOT NULL,
@@ -81,6 +78,7 @@ CREATE TABLE FisicCharacteristics(
 	Biotype nvarchar(255) NOT NULL
 )
 
+<p>Criando tabela da montaria<p>
 CREATE TABLE Mount(
 	IdMount int PRIMARY KEY IDENTITY(1,1) NOT NULL,
 	MountName nvarchar(max) NOT NULL,
@@ -88,6 +86,15 @@ CREATE TABLE Mount(
 	RestTime int NOT NULL
 )
 
+<p>Alterando tabela Users para ter relacionamento com a tabela Player<p>
+ALTER TABLE Users
+   ADD CONSTRAINT fk_IdUserPlayer_IdPlayer FOREIGN KEY (IdPlayer)
+      REFERENCES Player (IdPlayer)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+;
+
+<p>Alterando tabela Player para ter relacionamento com a tabela FisicCharacteristics<p>
 ALTER TABLE Player
    ADD CONSTRAINT fk_IdPlayerFisicCharacteristcs_IdFisicCharacteristics FOREIGN KEY (IdFisicCharacteristics)
       REFERENCES FisicCharacteristics (IdFisicCharacteristics)
@@ -95,6 +102,7 @@ ALTER TABLE Player
       ON UPDATE CASCADE
 ;
 
+<p>Alterando tabela Player para ter relacionamento com a tabela Mount<p>
 ALTER TABLE Player
    ADD CONSTRAINT fk_IdPlayerMount_IdMount FOREIGN KEY (IdMount)
       REFERENCES Mount (IdMount)
@@ -102,6 +110,7 @@ ALTER TABLE Player
       ON UPDATE CASCADE
 ;
 
+<p>Alterando tabela Player para ter relacionamento com a tabela PlayerType<p>
 ALTER TABLE Player
    ADD CONSTRAINT fk_IdPlayerType_IdPlayer FOREIGN KEY (IdPlayerType)
       REFERENCES PlayerType (IdPlayerType)
