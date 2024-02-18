@@ -3,19 +3,19 @@ Aplicação Console FastersGame Projeto Netuno
 
 # DESAFIO NETUNO
 TELA DE CADASTRO
-Nome completo
-Data de nascimento (Deve ter no mínimo 18 anos)
-Email
-Senha 
-Confirmar senha (As senhas devem ser validadas e devem ser iguais)
-Salvar
-Direciona para a tela de login
+1) Nome completo
+2) Data de nascimento (Deve ter no mínimo 18 anos)
+3) Email
+4) Senha 
+5) Confirmar senha (As senhas devem ser validadas e devem ser iguais)
+6) Salvar
+7) Direciona para a tela de login
 
 TELA DE LOGIN
-Solicita Email e senha
-Valida
-Caso esteja correta redireciona para a tela do jogo
-Caso não, informe o erro ao usuário e tente novamente (Se errar a senha 3 vezes encerra o 
+1) Solicita Email e senha
+2) Valida
+3) Caso esteja correta redireciona para a tela do jogo
+4) Caso não, informe o erro ao usuário e tente novamente (Se errar a senha 3 vezes encerra o 
 programa)
 
 TELA DO JOGO
