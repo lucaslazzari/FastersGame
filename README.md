@@ -1,5 +1,5 @@
-# FastersGame
-Aplicação Console FastersGame Projeto Netuno
+# FASTERSGAME
+Aplicação Console FastersGame Projeto Netuno utilizando .Net 6, Arquitetura Limpa, Padrão Repository, Dapper e Banco de Dados SqlServer
 
 # DESAFIO NETUNO
 TELA DE CADASTRO
@@ -19,7 +19,7 @@ TELA DE LOGIN
 programa)
 
 TELA DO JOGO
-<p>Escolha a classe para jogar:<p>
+Escolha a classe para jogar:
 1) Paladino [lança e escudo]
 2) Atirador [Arma]
 3) Guerreiro [Espada e Escudo]
@@ -39,3 +39,72 @@ Mana: 35, Velocidade de Ataque: 1.25
 3m/s, Tempo para descanso: 5 minutos
 10) Printa na tela as informações da Classe escolhida, Ferramentas de batalha e montaria com 
 todas as customizações que o usuário escolheu
+
+# BANCO DE DADOS
+CREATE TABLE Users(
+	IdUser int PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	FullName nvarchar(max) NOT NULL,
+	Email nvarchar(max) NOT NULL,
+	BirthDate nvarchar(8) NOT NULL,
+	Passwords nvarchar(max) NOT NULL,
+	IdPlayer int NOT NULL
+)
+
+ALTER TABLE Users
+   ADD CONSTRAINT fk_IdUserPlayer_IdPlayer FOREIGN KEY (IdPlayer)
+      REFERENCES Player (IdPlayer)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+;
+
+CREATE TABLE Player(
+	IdPlayer int PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	IdPlayerType int,
+	IdMount int,
+	IdFisicCharacteristics int
+)
+
+CREATE TABLE PlayerType(
+	IdPlayerType int PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	NameType nvarchar(max) NOT NULL,
+	Weapon nvarchar(max) NOT NULL,
+	Life int NOT NULL,
+	Mana int NOT NULL,
+	AtackSpeed float NOT NULL
+)
+
+CREATE TABLE FisicCharacteristics(
+	IdFisicCharacteristics int PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	HairColor nvarchar(255) NOT NULL,
+	SkinColor nvarchar(255) NOT NULL,
+	EyeColor nvarchar(255) NOT NULL,
+	Biotype nvarchar(255) NOT NULL
+)
+
+CREATE TABLE Mount(
+	IdMount int PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	MountName nvarchar(max) NOT NULL,
+	MovimentSpeed int NOT NULL,
+	RestTime int NOT NULL
+)
+
+ALTER TABLE Player
+   ADD CONSTRAINT fk_IdPlayerFisicCharacteristcs_IdFisicCharacteristics FOREIGN KEY (IdFisicCharacteristics)
+      REFERENCES FisicCharacteristics (IdFisicCharacteristics)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+;
+
+ALTER TABLE Player
+   ADD CONSTRAINT fk_IdPlayerMount_IdMount FOREIGN KEY (IdMount)
+      REFERENCES Mount (IdMount)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+;
+
+ALTER TABLE Player
+   ADD CONSTRAINT fk_IdPlayerType_IdPlayer FOREIGN KEY (IdPlayerType)
+      REFERENCES PlayerType (IdPlayerType)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+;
