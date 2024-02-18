@@ -1,7 +1,7 @@
 # FastersGame
 Aplicação Console FastersGame Projeto Netuno
 
-#DESAFIO NETUNO
+# DESAFIO NETUNO
 TELA DE CADASTRO
 Nome completo
 Data de nascimento (Deve ter no mínimo 18 anos)
