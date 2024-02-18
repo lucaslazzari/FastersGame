@@ -51,7 +51,7 @@ CREATE TABLE Users(
 	IdPlayer int NOT NULL
 )
 	
- <p> ** Criando tabela das informaçoes do personagem de acordo com o usuario<p>
+ <p> **Criando tabela das informaçoes do personagem de acordo com o usuario<p>
 CREATE TABLE Player(
 	IdPlayer int PRIMARY KEY IDENTITY(1,1) NOT NULL,
 	IdPlayerType int,
