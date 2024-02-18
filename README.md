@@ -19,7 +19,7 @@ TELA DE LOGIN
 programa)
 
 TELA DO JOGO
-Escolha a classe para jogar:
+<p>Escolha a classe para jogar:<p>
 1) Paladino [lança e escudo]
 2) Atirador [Arma]
 3) Guerreiro [Espada e Escudo]
